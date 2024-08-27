@@ -24,23 +24,39 @@ ListaOrdInt crearListaOrdInt() {
     ListaOrdInt lista = new _cabezalListaOrdInt;
     lista->ppio = NULL;
     lista->largo = 0;
-
+    return lista;
 };
+
+void agregar(NodoListaInt*& principioLista, int e) {
+    if (principioLista == NULL) {
+        principioLista = new NodoListaInt(e);
+    }
+    else if (e <= principioLista->dato) {
+        NodoListaInt *nuevo = new NodoListaInt(e);
+        nuevo->sig = principioLista;
+        principioLista = nuevo;
+    }
+    else {
+        agregar(principioLista->sig, e);
+    }
+}
 
 // PRE: -
 // POS: agrega el elemento e en la lista ordenada de menor a mayor
 void agregar(ListaOrdInt& l, int e) {
-    if (l == NULL) {
-        l->ppio = new NodoListaInt(e);
-    }
-    else if (l->ppio->dato > e) {
-
-    }
+    agregar(l->ppio, e);
+    l->largo++;
 };
 
 // PRE: -
 // POS: borra una ocurrencia del menor elemento de la lista. Si no hay elementos no tiene efecto
-void borrarMinimo(ListaOrdInt& l);
+void borrarMinimo(ListaOrdInt& l) {
+    if (l->ppio == NULL) return;
+    NodoListaInt* aux = l->ppio;
+    l->ppio = l->ppio->sig;
+    l->largo--;
+    delete aux;
+}
 
 // PRE: -
 // POS: borra una ocurrencia del mayor elemento de la lista. Si no hay elementos no tiene efecto
@@ -78,3 +94,19 @@ ListaOrdInt clon(ListaOrdInt l);
 // PRE: -
 // POS: libera la memoria de la lista
 void destruir(ListaOrdInt& l);
+
+void imprimir(NodoListaInt*& nodo) {
+    if (nodo == NULL) {
+        cout << endl;
+        delete nodo;
+        return;
+    }
+    cout << nodo->dato << " ";
+    imprimir(nodo->sig);
+}
+
+void imprimir(ListaOrdInt l) {
+    NodoListaInt* principio = l->ppio;
+    imprimir(l->ppio);
+    l->ppio = principio;
+}
