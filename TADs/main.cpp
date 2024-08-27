@@ -18,8 +18,10 @@ int main() {
 
     cout << "Largo: " << listaOrdenada->largo << endl;
 
-    borrarMinimo(listaOrdenada);
-    borrarMinimo(listaOrdenada);
+    //borrarMinimo(listaOrdenada);
+    //borrarMinimo(listaOrdenada);
+
+    borrarMaximo(listaOrdenada);
 
     imprimir(listaOrdenada);
 

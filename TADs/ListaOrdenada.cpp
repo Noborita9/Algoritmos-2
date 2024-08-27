@@ -58,9 +58,25 @@ void borrarMinimo(ListaOrdInt& l) {
     delete aux;
 }
 
+void borrarMaximo(NodoListaInt*& l) {
+    if (l == NULL) return;
+    if (l->sig = NULL) {
+        NodoListaInt* ultimo = l;
+        l = NULL;
+        delete ultimo;
+    }
+    borrarMaximo(l->sig);       
+}
+
 // PRE: -
 // POS: borra una ocurrencia del mayor elemento de la lista. Si no hay elementos no tiene efecto
-void borrarMaximo(ListaOrdInt& l);
+void borrarMaximo(ListaOrdInt& l) {
+    NodoListaInt* principio = l->ppio;
+    borrarMaximo(l->ppio);
+    l->ppio = principio;
+    l->largo--;
+    delete principio;
+}
 
 // PRE: -
 // POS: borra una ocurrencia del primer elemento que sea igual a e
