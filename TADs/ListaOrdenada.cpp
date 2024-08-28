@@ -4,9 +4,9 @@ using namespace std;
 #include <assert.h>
 
 struct NodoListaInt {
-    int dato;
-    NodoListaInt *sig;
-    NodoListaInt() : dato(0), sig(NULL) {}
+	int dato;
+	NodoListaInt *sig;
+	NodoListaInt() : dato(0), sig(NULL) {}
 	NodoListaInt(int d) : dato(d), sig(NULL) {}
 };
 
@@ -178,7 +178,6 @@ void destruir(ListaOrdInt& l) {
 void imprimir(NodoListaInt*& nodo) {
     if (nodo == NULL) {
         cout << endl;
-        delete nodo;
         return;
     }
     cout << nodo->dato << " ";
@@ -186,7 +185,47 @@ void imprimir(NodoListaInt*& nodo) {
 }
 
 void imprimir(ListaOrdInt l) {
-    NodoListaInt* principio = l->ppio;
     imprimir(l->ppio);
-    l->ppio = principio;
+}
+
+int main() {
+    ListaOrdInt listaOrdenada = crearListaOrdInt();
+
+    agregar(listaOrdenada, 2);
+    agregar(listaOrdenada, 5);
+    agregar(listaOrdenada, 3);
+    agregar(listaOrdenada, 1);
+    agregar(listaOrdenada, 9);
+    agregar(listaOrdenada, 6);
+
+    imprimir(listaOrdenada);
+
+    cout << "Largo: " << listaOrdenada->largo << endl;
+
+    //borrarMinimo(listaOrdenada);
+    //borrarMinimo(listaOrdenada);
+
+    //borrarMaximo(listaOrdenada);
+
+    // borrar(listaOrdenada, 10);
+
+    // cout << "Primier elemento: " << minimo(listaOrdenada) << endl;
+    // cout << "Último elemento: " << maximo(listaOrdenada) << endl;
+
+    // imprimir(listaOrdenada);
+ 
+    // cout << "Largo: " << listaOrdenada->largo << endl;
+
+    cout << "Existe el elemento? " << existe(listaOrdenada, 15) << endl;
+
+    ListaOrdInt ordenadaDos = crearListaOrdInt();
+
+    agregar(ordenadaDos, 11);
+
+    cout << "Esta vacia? " << esVacia(ordenadaDos) << endl;
+
+    cout << "Cantidad de elementos: " << cantidadElementos(listaOrdenada) << endl;
+
+
+    return 0;
 }
