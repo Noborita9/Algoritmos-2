@@ -4,7 +4,6 @@
 using namespace std;
 
 int main() {
-
     ListaOrdInt listaOrdenada = crearListaOrdInt();
 
     agregar(listaOrdenada, 2);
@@ -21,11 +20,27 @@ int main() {
     //borrarMinimo(listaOrdenada);
     //borrarMinimo(listaOrdenada);
 
-    borrarMaximo(listaOrdenada);
+    //borrarMaximo(listaOrdenada);
 
-    imprimir(listaOrdenada);
+    // borrar(listaOrdenada, 10);
 
-    cout << "Largo: " << listaOrdenada->largo << endl;
+    // cout << "Primier elemento: " << minimo(listaOrdenada) << endl;
+    // cout << "Último elemento: " << maximo(listaOrdenada) << endl;
+
+    // imprimir(listaOrdenada);
+ 
+    // cout << "Largo: " << listaOrdenada->largo << endl;
+
+    cout << "Existe el elemento? " << existe(listaOrdenada, 15) << endl;
+
+    ListaOrdInt ordenadaDos = crearListaOrdInt();
+
+    agregar(ordenadaDos, 11);
+
+    cout << "Esta vacia? " << esVacia(ordenadaDos) << endl;
+
+    cout << "Cantidad de elementos: " << cantidadElementos(listaOrdenada) << endl;
+
 
     return 0;
 }
